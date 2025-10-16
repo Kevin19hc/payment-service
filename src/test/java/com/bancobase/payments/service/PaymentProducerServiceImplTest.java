@@ -32,7 +32,6 @@ class PaymentProducerServiceImplTest {
         openMocks(this);
 
         ReflectionTestUtils.setField(paymentProducerService, "exchangeName", "test-exchange");
-        ReflectionTestUtils.setField(paymentProducerService, "routingKey", "test-routing-key");
 
         payment = new Payment();
         payment.setId("p123");
@@ -48,7 +47,7 @@ class PaymentProducerServiceImplTest {
         paymentProducerService.publish(payment);
 
         verify(rabbitTemplate, times(1))
-                .convertAndSend("test-exchange", "test-routing-key", payment);
+                .convertAndSend("test-exchange", "", payment);
     }
 
     @Test
@@ -61,6 +60,6 @@ class PaymentProducerServiceImplTest {
         paymentProducerService.publish(payment);
 
         verify(rabbitTemplate, times(1))
-                .convertAndSend("test-exchange", "test-routing-key", payment);
+                .convertAndSend("test-exchange", "", payment);
     }
 }
