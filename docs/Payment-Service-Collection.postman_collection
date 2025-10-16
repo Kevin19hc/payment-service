@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "5df4b0d1-904b-4a1b-b288-7d2d6ce2ea3f",
+		"name": "Payment Service Collection",
+		"description": "Improved collection using environment variable {{baseUrl}} and descriptive request names.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34048425"
+	},
+	"item": [
+		{
+			"name": "Create Payment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"concept\": \"Transfer\",\n  \"quantity\": 2,\n  \"payer\": \"Alice Johnson\",\n  \"recipient\": \"Bob Smith\",\n  \"amount\": 500.75,\n  \"status\": \"PENDING\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/payments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Payments",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/payments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment by ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/payments/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"payments",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Payment Status",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/payments/{{id}}?status=COMPLETED",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"payments",
+						"{{id}}"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "COMPLETED"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1"
+		},
+		{
+			"key": "id",
+			"value": "68ef55a034fe9dc32d9619ca"
+		}
+	]
+}

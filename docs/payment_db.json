@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "_class",
+    "types": [
+      "string"
+    ]
+  },
+  {
+    "_id": "_id",
+    "types": [
+      "objectId"
+    ]
+  },
+  {
+    "_id": "amount",
+    "types": [
+      "string"
+    ]
+  },
+  {
+    "_id": "concept",
+    "types": [
+      "string"
+    ]
+  },
+  {
+    "_id": "payer",
+    "types": [
+      "string"
+    ]
+  },
+  {
+    "_id": "quantity",
+    "types": [
+      "int"
+    ]
+  },
+  {
+    "_id": "recipient",
+    "types": [
+      "string"
+    ]
+  },
+  {
+    "_id": "status",
+    "types": [
+      "string"
+    ]
+  }
+]
