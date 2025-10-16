@@ -15,6 +15,9 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private PaymentProducerService paymentProducerService;
+
     @Override
     public Payment createPayment(Payment payment) {
         return paymentRepository.save(payment);
@@ -37,6 +40,7 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setStatus(PaymentStatus.fromString(newStatus));
         Payment updatedPayment = paymentRepository.save(payment);
 
+        paymentProducerService.publish(updatedPayment);
         return updatedPayment;
     }
 }

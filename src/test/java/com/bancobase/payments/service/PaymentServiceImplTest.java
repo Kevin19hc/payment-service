@@ -11,19 +11,26 @@ import org.mockito.Mock;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 class PaymentServiceImplTest {
 
     @Mock
     private PaymentRepository paymentRepository;
+
+    @Mock
+    private PaymentProducerService paymentProducerService;
 
     @InjectMocks
     private PaymentServiceImpl paymentService;
@@ -58,7 +65,7 @@ class PaymentServiceImplTest {
     @Test
     @DisplayName("Should return all payments")
     void testGetAllPayments_shouldReturnList_whenPaymentsExist() {
-        when(paymentRepository.findAll()).thenReturn(List.of(payment));
+        when(paymentRepository.findAll()).thenReturn(Collections.singletonList(payment));
 
         List<Payment> result = paymentService.getAllPayments();
 
@@ -101,6 +108,7 @@ class PaymentServiceImplTest {
 
         assertThat(result.getStatus()).isEqualTo(PaymentStatus.COMPLETED);
         verify(paymentRepository, times(1)).save(payment);
+        verify(paymentProducerService, times(1)).publish(payment);
     }
 
     @Test
@@ -113,5 +121,6 @@ class PaymentServiceImplTest {
         );
 
         verify(paymentRepository, never()).save(any());
+        verify(paymentProducerService, never()).publish(any());
     }
 }
