@@ -24,7 +24,7 @@
     ]
   },
   {
-    "_id": "payer",
+    "_id": "payerId",
     "types": [
       "string"
     ]
@@ -36,7 +36,13 @@
     ]
   },
   {
-    "_id": "recipient",
+    "_id": "recipientId",
+    "types": [
+      "string"
+    ]
+  },
+  {
+    "_id": "productId",
     "types": [
       "string"
     ]
