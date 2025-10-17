@@ -59,8 +59,8 @@ class PaymentControllerIT {
         repository.save(Payment.builder()
                 .concept("Invoice #A")
                 .quantity(1)
-                .payer("Payer test")
-                .recipient("Recipient test")
+                .payerId("Payer test")
+                .recipientId("Recipient test")
                 .amount(new BigDecimal("999.99"))
                 .status(PaymentStatus.COMPLETED)
                 .build());
@@ -77,8 +77,8 @@ class PaymentControllerIT {
         Payment p = repository.save(Payment.builder()
                 .concept("Invoice #77")
                 .quantity(1)
-                .payer("Payer test")
-                .recipient("Recipient test")
+                .payerId("Payer test")
+                .recipientId("Recipient test")
                 .amount(new BigDecimal("1200.00"))
                 .status(PaymentStatus.PENDING)
                 .build());
@@ -94,8 +94,8 @@ class PaymentControllerIT {
         Payment p = repository.save(Payment.builder()
                 .concept("Invoice #88")
                 .quantity(1)
-                .payer("Payer test")
-                .recipient("Banco Base")
+                .payerId("Payer test")
+                .recipientId("Banco Base")
                 .amount(new BigDecimal("500.00"))
                 .status(PaymentStatus.PENDING)
                 .build());
@@ -173,8 +173,8 @@ class PaymentControllerIT {
         Payment.PaymentBuilder builder = Payment.builder()
                 .concept("Invoice #123")
                 .quantity(2)
-                .payer("Payer test")
-                .recipient("Recipient test")
+                .payerId("Payer test")
+                .recipientId("Recipient test")
                 .amount(BigDecimal.valueOf(1500.75))
                 .status(PaymentStatus.PENDING);
 

@@ -49,8 +49,8 @@ public class PaymentController {
                                             {
                                               "concept": "Invoice #12345",
                                               "quantity": 1,
-                                              "payer": "Juan Pérez",
-                                              "recipient": "Banco Base",
+                                              "payerId": "1919",
+                                              "recipientId": "0024",
                                               "amount": 1200.50,
                                               "status": "PENDING"
                                             }

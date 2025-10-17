@@ -35,8 +35,8 @@ class PaymentProducerServiceImplTest {
 
         payment = new Payment();
         payment.setId("p123");
-        payment.setPayer("TestPayer");
-        payment.setRecipient("TestRecipient");
+        payment.setPayerId("TestPayer");
+        payment.setRecipientId("TestRecipient");
         payment.setAmount(BigDecimal.valueOf(250.75));
         payment.setStatus(PaymentStatus.PENDING);
     }

@@ -24,9 +24,11 @@ public class Payment {
 
     private Integer quantity;
 
-    private String payer;
+    private String payerId;
 
-    private String recipient;
+    private String recipientId;
+
+    private String productId;
 
     private BigDecimal amount;
 

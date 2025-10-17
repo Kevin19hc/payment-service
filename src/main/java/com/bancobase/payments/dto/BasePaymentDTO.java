@@ -32,11 +32,15 @@ public class BasePaymentDTO {
 
     @Schema(description = "Identifier of the payer.", example = "user123")
     @NotBlank
-    protected String payer;
+    protected String payerId;
 
     @Schema(description = "Identifier of the recipient.", example = "Vendor123")
     @NotBlank
-    protected String recipient;
+    protected String recipientId;
+
+    @Schema(description = "Identifier of the product.", example = "001")
+    @NotBlank
+    protected String productId;
 
     @Schema(description = "Amount of the payment. Must be positive.", example = "199.99")
     @NotNull

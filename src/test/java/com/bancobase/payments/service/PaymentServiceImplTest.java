@@ -43,8 +43,8 @@ class PaymentServiceImplTest {
 
         payment = new Payment();
         payment.setId("abc123");
-        payment.setPayer("TestPayer");
-        payment.setRecipient("TestRecipient");
+        payment.setPayerId("TestPayer");
+        payment.setRecipientId("TestRecipient");
         payment.setAmount(BigDecimal.valueOf(120.50));
         payment.setStatus(PaymentStatus.PENDING);
     }
@@ -70,7 +70,7 @@ class PaymentServiceImplTest {
         List<Payment> result = paymentService.getAllPayments();
 
         assertThat(result).hasSize(1);
-        assertThat(result.get(0).getRecipient()).isEqualTo("TestRecipient");
+        assertThat(result.get(0).getRecipientId()).isEqualTo("TestRecipient");
         verify(paymentRepository, times(1)).findAll();
     }
 
@@ -82,7 +82,7 @@ class PaymentServiceImplTest {
         Payment result = paymentService.getPaymentById("abc123");
 
         assertThat(result).isNotNull();
-        assertThat(result.getPayer()).isEqualTo("TestPayer");
+        assertThat(result.getPayerId()).isEqualTo("TestPayer");
         verify(paymentRepository, times(1)).findById("abc123");
     }
 
